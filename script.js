@@ -21,14 +21,14 @@ resetButton.textContent = "Reset"
 
 divButtons.appendChild(resetButton)
 
-// Black color
+// Black color button
 const colorBlackButton = document.createElement("button")
 colorBlackButton.setAttribute("id", "black")
 colorBlackButton.textContent = "Black Color"
 
 divButtons.appendChild(colorBlackButton)
 
-// Random color
+// Random color button
 const colorRandomButton = document.createElement("button")
 colorRandomButton.setAttribute("id", "random")
 colorRandomButton.textContent = "Random Color"
@@ -47,16 +47,20 @@ divBoardContent.setAttribute("id", "board-content")
 
 divBoard.appendChild(divBoardContent)
 
-// Creation of grid within the board container
-let board = document.getElementById("board-content")
-board.style.gridTemplateColumns = "repeat(16, 1fr)"
-board.style.gridTemplateRows = "repeat(16, 1fr)"
+// Creation of grid within the board content container
+function createGrid(size) {
+    let board = document.getElementById("board-content");
+    let squares = board.querySelectorAll("div")
+    squares.forEach((div) => div.remove())
+    board.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    board.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 
-for (let i = 0; i < 256; i++) {
-    let square = document.createElement("div")
-    square.setAttribute("id", "kotak")
-    square.style.backgroundColor = "white"
-    square.style.border = "1px solid black"
-    board.insertAdjacentElement("beforeend", square)
+    let amount = size * size
+    for (let i = 0; i < amount; i++) {
+        let square = document.createElement("div")
+        square.setAttribute("id", "kotak")
+        board.insertAdjacentElement("beforeend", square)
+    }
 }
 
+createGrid(5)

@@ -44,7 +44,7 @@ function createGrid(size) {
 }
 
 createGrid(16)
-let color = "black"
+let color = Math.random() * 360
 function colorSquare() {
-    this.style.backgroundColor = color
+    this.style.backgroundColor = `hsl(${color}, 100%, 50%)`
 }

@@ -14,27 +14,6 @@ divButtons.setAttribute("id", "tombol")
 
 divContainer.appendChild(divButtons)
 
-// Reset button
-const resetButton = document.createElement("button")
-resetButton.setAttribute("id", "reset")
-resetButton.textContent = "Reset"
-
-divButtons.appendChild(resetButton)
-
-// Black color button
-const colorBlackButton = document.createElement("button")
-colorBlackButton.setAttribute("id", "black")
-colorBlackButton.textContent = "Black Color"
-
-divButtons.appendChild(colorBlackButton)
-
-// Random color button
-const colorRandomButton = document.createElement("button")
-colorRandomButton.setAttribute("id", "random")
-colorRandomButton.textContent = "Random Color"
-
-divButtons.appendChild(colorRandomButton)
-
 // Third child of Main container which is another container for the board of the sketch
 const divBoard = document.createElement("div")
 divBoard.setAttribute("id", "board")
@@ -59,8 +38,13 @@ function createGrid(size) {
     for (let i = 0; i < amount; i++) {
         let square = document.createElement("div")
         square.setAttribute("id", "kotak")
+        square.addEventListener("mouseover", colorSquare)
         board.insertAdjacentElement("beforeend", square)
     }
 }
 
-createGrid(5)
+createGrid(16)
+let color = "black"
+function colorSquare() {
+    this.style.backgroundColor = color
+}
